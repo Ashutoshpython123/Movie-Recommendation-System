@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommendation System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    
+    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script type="text/javascript">
+    var films = {{suggestions|tojson}};
+  </script>
+</head>
+
+<body>
+    <!-- Website Title -->
+    <div class="container">
+        <h2 class='container-heading'><span>Movie Recommendation System </span>only for boolywood movie</h2>
+        <div class='description'>
+            <p>A Machine Learning Web App, Built with Flask by Ashutosh Kumar.<a href="https://github.com/Ashutoshpython123/Movie-Recommendation-System">github</a></p>
+        </div>
+    </div>
+
+    </br>
+ <div class="form-group shadow-textarea" style="margin-top: 30px;text-align: center;color: blue;">
+    <form action="{{ url_for('recommended') }}" method="post">
+        <input class="srch" id="autoComplete" type='text' name="m" placeholder="Search Movie here...." required>
+        <button id="S_btn" type="submit">Search</button>
+    </form>
+</div>
+</br>  
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-4">
+       <img src="{{rcmd_url[10]}}" alt="Paris" width="300" height="300">
+       <h5 style="margin-left:50px">{{rcmd_movie[10]}}</h5>
+    </div>
+    <div class="col-md-8">
+<ul>
+  <li style="color:red">Genres :</li><p style="color:blue">{{rcmd_title[1]}}</p>
+  <li style="color:red">IMDB Rating : </li><p style="color:blue">{{rcmd_title[4]}}</p>
+  <li style="color:red">Release Date : </li><p style="color:blue">{{rcmd_title[3]}}</p>
+  <li style="color:red">Actors : </li><p style="color:blue">{{rcmd_title[2]}}</p>
+  <li style="color:red">Story : </li><p style="color:blue">{{rcmd_title[5]}}</p>
+</ul>
+    </div>
+  </div>
+</div>   
+
+</br>
+<h3 style="text-align: center; color: #ff0000;"><span>Recommended Movie</span></h3>
+</br>
+
+    <div class="container">
+    <div class="row">
+    {% for movie, url in zip(rcmd_movie, rcmd_url) %}
+    <div class="col">
+       <img src="{{url}}" alt="Paris" width="300" height="300">
+       <h5 style="margin-left:50px">{{movie}}</h5>
+    </div>
+    {% endfor %}
+    </div>
+   </div>    
+       
+<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename='autocomplete.js')}}"></script>
+    
+    
+   
+
+</body>
+</html>

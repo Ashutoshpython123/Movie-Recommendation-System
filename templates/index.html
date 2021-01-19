@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Movie Recommendation System</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<script type="text/javascript">
+    var films = {{suggestions|tojson}};
+  </script>
+
+</head>
+
+<body>
+    <!-- Website Title -->
+    <div class="container">
+        <h2 class='container-heading'><span>Movie Recommendation System </span>only for boolywood movie</h2>
+        <div class='description'>
+            <p>A Machine Learning Web App, Built with Flask by Ashutosh Kumar. <a href="https://github.com/Ashutoshpython123/Movie-Recommendation-System">github</a></p>
+        </div>
+    </div>
+</br>
+ <div class="form-group shadow-textarea" style="margin-top: 30px;text-align: center;color: blue;">
+    <form action="{{ url_for('recommended') }}" method="post">
+        <input class="srch" id="autoComplete" type='text' name="m" placeholder="Search Movie here...." required>
+        <button id="S_btn" type="submit">Search</button>
+    </form>
+</div>               
+
+<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="{{url_for('static', filename='autocomplete.js')}}"></script>
+    
+
+</body>
+</html>
